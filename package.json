@@ -1,0 +1,11 @@
+{
+  "name": "@gizmogoody/card-badge",
+  "version": "1.0.0",
+  "description": "Console badge shared by GizmoGoody Home Assistant cards.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": { "build": "tsc", "prepare": "tsc" },
+  "devDependencies": { "typescript": "^5.6.3" }
+}
