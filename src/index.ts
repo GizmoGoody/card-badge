@@ -1,7 +1,8 @@
 /**
  * GizmoGoody console badge, shared by every GizmoGoody card.
  * Prints a collapsed console group: [icon + name][version] by GizmoGoody,
- * with the description and links inside. Colors are the original Touchpad Card
+ * with the description and links inside (Issues, or Discussions for a card
+ * that takes feedback there). Colors are the original Touchpad Card
  * navy (#001689) and silver (#9ea1a2). Copy this file unchanged into other cards.
  */
 export interface BadgeInfo {
@@ -10,6 +11,7 @@ export interface BadgeInfo {
   version: string;
   description: string;
   repo: string; // GitHub repository name under GizmoGoody, for example "touchpad-card"
+  feedback?: "issues" | "discussions"; // where to ask about the card: Issues (the default) or Discussions
 }
 
 const NAVY = "#001689";
@@ -26,6 +28,10 @@ export function printBadge(info: BadgeInfo): void {
   );
   console.log(`%cDescription:%c ${info.description}`, "font-weight: bold;", "font-weight: normal;");
   console.log(`%cGitHub:%c ${url}`, "font-weight: bold;", "font-weight: normal;");
-  console.log(`%cReport an issue:%c ${url}/issues`, "font-weight: bold;", "font-weight: normal;");
+  if (info.feedback === "discussions") {
+    console.log(`%cDiscussions:%c ${url}/discussions`, "font-weight: bold;", "font-weight: normal;");
+  } else {
+    console.log(`%cReport an issue:%c ${url}/issues`, "font-weight: bold;", "font-weight: normal;");
+  }
   console.groupEnd();
 }
