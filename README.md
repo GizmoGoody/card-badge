@@ -1,6 +1,6 @@
 # card-badge
 
-The console badge shared by GizmoGoody Home Assistant cards. It prints a collapsed console group with the card icon, name, version, and "by GizmoGoody", and inside it the description, GitHub link, and issues link.
+The console badge shared by GizmoGoody Home Assistant cards. It prints a collapsed console group with the card icon, name, version, and "by GizmoGoody", and inside it the description, GitHub link, and issues link (or Discussions link).
 
 ## Use in a card
 
@@ -8,7 +8,7 @@ Add the dependency to the card's `package.json`, pinned to a release tag:
 
 ```json
 "dependencies": {
-  "@gizmogoody/card-badge": "github:GizmoGoody/card-badge#v1.0.0"
+  "@gizmogoody/card-badge": "github:GizmoGoody/card-badge#v1.1.0"
 }
 ```
 
@@ -25,6 +25,8 @@ printBadge({
   repo: "touchpad-card",
 });
 ```
+
+A card that takes feedback in GitHub Discussions instead of Issues adds `feedback: "discussions"`, and the badge links to its Discussions.
 
 npm runs the `prepare` script when it installs this package from GitHub, which compiles it. The card's Rollup build then bundles it into the card file.
 
